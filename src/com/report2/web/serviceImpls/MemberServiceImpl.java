@@ -4,30 +4,30 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
 
-import com.report2.web.doalmpls.StudentDAOImpl;
-import com.report2.web.doas.StudentDAO;
-import com.report2.web.domains.StudentBean;
-import com.report2.web.services.StudentService;
+import com.report2.web.daolmpls.MemberDAOImpl;
+import com.report2.web.daos.MemberDAO;
+import com.report2.web.domains.MemberBean;
+import com.report2.web.services.MemberService;
 
-public class StudentServiceImpl implements StudentService{
-	private StudentDAO dao;
-	public StudentServiceImpl() {
-		dao = new StudentDAOImpl();
+public class MemberServiceImpl implements MemberService{
+	private MemberDAO dao;
+	public MemberServiceImpl() {
+		dao = new MemberDAOImpl();
 	}
 	@Override
-	public void createReport(StudentBean param) {
-		param.setStudentNum(createHakNum(param));
-		param.setSum(creatSum(param));
+	public void createReport(MemberBean param) {
+		//param.setStudentNum(createHakNum(param));
+		//param.setSum(creatSum(param));
 		param.setAverage(creatAv(param));
 		dao.insertStudent(param);
 	}
 
-	@Override
-	public String createHakNum(StudentBean param) {
-		Random ran = new Random();
-		String flag = String.format("%s-%s%03d", creatYear(), param.getSsn().substring(7,8), ran.nextInt(999)+1);
-		return flag;
-	}
+	//@Override
+	//public String createHakNum(MemberBean param) {
+		//Random ran = new Random();
+		//String flag = String.format("%s-%s%03d", creatYear(), param.getSsn().substring(7,8), ran.nextInt(999)+1);
+		//return flag;
+	//}
 
 	@Override
 	public String creatYear() {
@@ -37,7 +37,7 @@ public class StudentServiceImpl implements StudentService{
 	}
 
 	@Override
-	public String creatSum(StudentBean param) {
+	public String creatSum(MemberBean param) {
 		String sum2 = "";
 		int sum = 0;
 		int kor = Integer.parseInt(param.getKor());
@@ -49,7 +49,7 @@ public class StudentServiceImpl implements StudentService{
 	}
 
 	@Override
-	public String creatAv(StudentBean param) {
+	public String creatAv(MemberBean param) {
 		String sum2 = "";
 		int sum = 0;
 		int kor = Integer.parseInt(param.getKor());
@@ -58,6 +58,11 @@ public class StudentServiceImpl implements StudentService{
 		sum = (kor+eng+math)/3;
 		sum2 = String.valueOf(sum);
 		return sum2;
+	}
+	@Override
+	public String createHakNum(MemberBean param) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

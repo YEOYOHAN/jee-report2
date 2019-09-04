@@ -1,26 +1,38 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java"  contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>성적관리</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<title>비트 대학</title>
+<script  src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
-	<h1>회원가입</h1>
-	<form id="report" action="<%=request.getContextPath() %>/Student.do">
-	이름 <input type="text" name="name"/><br />
-	주민번호 <input type="text" name="ssn"/><br />
-	국어 <input type="text" name="kor"/><br />
-	영어 <input type="text" name="eng"/><br />
-	수학 <input type="text" name="math"/><br />
-	<input type="submit" value="전투더송"/><br />
-	</form>
+<div>
+   <h2>환영합니다</h2>
+   <table border='1'>
+      <tr>
+          <td>로그인</td>
+          <td><input id="btn"  type="button" value="LOGIN" /></td>
+      </tr>
+      <tr>
+          <td>학생부 등록</td>
+          <td><a id="a_register"  href="#">바로가기</a></td>
+      </tr>
+   </table>
+   
+</div>
 <script>
-$('#report').submit(function() {
-	alert('감사합니다.');
+$('#btn').click(function(){
+   alert('버튼 클릭 !!');
+   location.assign('<%=request.getContextPath() %>/member.do?action=move&dest=login');
+   
 });
-</script>	
+$('#a_register').click(function() {
+   alert('버튼 클릭 !!');
+   location.assign('<%=request.getContextPath() %>/member.do?action=move&dest=register');
+});
+</script>
 </body>
+   
 </html>
